@@ -3,7 +3,7 @@ from werkzeug.utils import secure_filename, redirect
 import pandas as pd
 
 app = Flask(__name__)
-
+app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 df = None
 
 
