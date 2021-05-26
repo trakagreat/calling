@@ -6,15 +6,16 @@ app = Flask(__name__)
 
 df = None
 
+
 @app.route('/')
 def hello_world():
     return render_template("index.html")
+
 
 def read_list(file):
     global df
     df = pd.read_excel(file)
     print(df)
-
 
 
 @app.route('/uploader', methods=['GET', 'POST'])
@@ -24,12 +25,7 @@ def upload_file():
         f.save(secure_filename(f.filename))
         read_list(f)
 
-        return render_template("list.html",df=df)
-
-
-
-
-
+        return render_template("list.html", df=df)
 
 
 if __name__ == '__main__':
