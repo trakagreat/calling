@@ -14,7 +14,7 @@ def read_list(file):
     global df
     df = pd.read_excel(file)
     print(df)
-    return "uploade"
+
 
 
 @app.route('/uploader', methods=['GET', 'POST'])
