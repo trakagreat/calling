@@ -38,7 +38,7 @@
         </nav>
     </div>
     <div class="text-center" style="margin: auto;padding: auto;padding-top: 1rem;padding-bottom: 1rem;margin-top: 12rem;">
-         <form action = "http://localhost:5000/uploader" method = "POST"
+         <form action = "{{ url_for('upload_file') }}" method = "POST"
          enctype = "multipart/form-data">
          <input type = "file" name = "file" />
          <input type = "submit"/>
