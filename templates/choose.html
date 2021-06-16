@@ -26,21 +26,37 @@
             </div>
         </div>
     </nav><!-- End: excel_header -->
+    <form method="post" action="{{ url_for('print_list') }}">
     <div class="card" style="margin: 0.2rem;">
         <div class="card-body">
-            <h4 class="card-title" style="font-size: 1rem;background: #c9e8dd;padding: 0.1rem;">Select "name" column</h4>
-            <p class="card-text"><button class="btn btn-primary border rounded-0 d-inline-flex align-items-center" type="button" style="background: #8cd600;color: #222222;border-style: none;width: auto;height: 1.5rem;">Button</button></p>
+            <h4 class="card-title" style="font-size: 1rem;background: #c9e8dd;padding: 0.1rem;">Column for names</h4>
+            <p class="card-text">
+            <select name="name_tag" class="custom-select custom-select-sm">
+                <option selected>select column</option>
+                    {% for col in cols %}
+                        <option value={{col}}>{{ col }}</option>
+                    {% endfor %}
+            </select>
+            </p>
         </div>
     </div>
     <div class="card" style="margin: 0.2rem;">
         <div class="card-body">
-            <h4 class="card-title" style="font-size: 1rem;background: #c9e8dd;padding: 0.1rem;">Select "contact" column</h4>
-            <p class="card-text"><button class="btn btn-primary border rounded-0 d-inline-flex align-items-center" type="button" style="background: #8cd600;color: #222222;border-style: none;width: auto;height: 1.5rem;">Button</button></p>
+            <h4 class="card-title" style="font-size: 1rem;background: #c9e8dd;padding: 0.1rem;">Column for contact numbers</h4>
+            <p class="card-text">
+                <select name="contact_tag" class="custom-select custom-select-sm">
+                <option selected>select column</option>
+                    {% for col in cols %}
+                        <option value={{ col }}>{{ col }}</option>
+                    {% endfor %}
+                </select>
+            </p>
         </div>
     </div>
     <div style="text-align: center;">
-        <!-- Start: standard_button --><button class="btn btn-primary border rounded-0" type="button" style="background: #c9e8dd;color: #222222;border-style: none;">Submit</button><!-- End: standard_button -->
+        <!-- Start: standard_button --><button class="btn btn-primary border rounded-0" type="submit" style="background: #c9e8dd;color: #222222;border-style: none;">Submit</button><!-- End: standard_button -->
     </div>
+    </form>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
 </body>

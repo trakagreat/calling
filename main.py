@@ -31,12 +31,21 @@ def upload_file():
 def choose_column():
     columns = df.columns
     print(columns)
-    return render_template('choose.html',col=columns)
+    return render_template('choose.html', cols=columns)
 
 
 @app.route('/uploadpage', methods=['GET', 'POST'])
 def upload_page():
     return render_template("upload.html", df=df)
+
+
+@app.route('/printlist', methods=['GET', 'POST'])
+def print_list():
+    if request.method == 'POST':
+        contact_tag = request.form.get("contact_tag")
+        name_tag = request.form.get('name_tag')
+        cols = [contact_tag, name_tag]
+    return render_template("listpage.html", contact_tag=contact_tag,name_tag=name_tag, df=df)
 
 
 if __name__ == '__main__':
