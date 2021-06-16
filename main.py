@@ -4,7 +4,7 @@ import pandas as pd
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
-df = None
+df = pd.read_excel("Book.xlsx")
 
 
 @app.route('/')
@@ -24,8 +24,19 @@ def upload_file():
         f = request.files['file']
         f.save(secure_filename(f.filename))
         read_list(f)
+        return redirect(url_for('choose_column'))
 
-        return render_template("list.html", df=df)
+
+@app.route('/choose', methods=['GET', 'POST'])
+def choose_column():
+    columns = df.columns
+    print(columns)
+    return render_template('choose.html',col=columns)
+
+
+@app.route('/uploadpage', methods=['GET', 'POST'])
+def upload_page():
+    return render_template("upload.html", df=df)
 
 
 if __name__ == '__main__':
