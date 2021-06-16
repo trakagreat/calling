@@ -26,31 +26,19 @@
             </div>
         </div>
     </nav><!-- End: excel_header -->
-    <form method="post" action="{{ url_for("print_list") }}">
+    <form method="post" action="{{ url_for('choose_col') }}" >
     <div class="card" style="margin: 0.2rem;">
         <div class="card-body">
-            <h4 class="card-title" style="font-size: 1rem;background: #c9e8dd;padding: 0.1rem;">Column for names</h4>
-            <select name="name_tag" class="custom-select custom-select-sm">
+            <h4 class="card-title" style="font-size: 1rem;background: #c9e8dd;padding: 0.1rem;">Column Index</h4>
+            <p class="card-text">
+                  <select name="column_index"  class="custom-select custom-select-sm">
                 <option selected>select column</option>
-                    {% for i in range(df.shape[1]) %}
-                        <option value={{i}}>{{cols[i]}}</option>
+                  <option  value={{"default"}}>{{ cols.values}}</option>
+                    {% for j in range(df.head().shape[0]) %}
+                        <option value={{j}}>{{ df.iloc[j].dropna().values }}</option>
                     {% endfor %}
             </select>
-            </p>
-        </div>
-    </div>
-    <div class="card" style="margin: 0.2rem;">
-        <div class="card-body">
-            <h4 class="card-title" style="font-size: 1rem;background: #c9e8dd;padding: 0.1rem;">Column for contact numbers</h4>
-            <p class="card-text">
-                <select name="contact_tag" class="custom-select custom-select-sm">
-                <option selected>select column</option>
-                    {% for i in range(df.shape[1]) %}
-                        <option value={{i}}>{{cols[i]}}</option>
-                    {% endfor %}
-                </select>
-            </p>
-        </div>
+
     </div>
     <div style="text-align: center;">
         <!-- Start: standard_button --><button class="btn btn-primary border rounded-0" type="submit" style="background: #c9e8dd;color: #222222;border-style: none;">Submit</button><!-- End: standard_button -->
@@ -59,7 +47,7 @@
     <div  style="padding: 0.5rem; text-align: center">
     <div style="padding: 0.5rem; text-align: center; margin: auto">
         <p style="text-align: center">
-        {{ df.to_html(classes=("table-bordered", "table-striped", "table-hover")) | safe}}
+        {{ df.to_html(classes=("table-bordered", "table-striped", "table-hover","flex")) | safe}}
             </p>
     </div>
         </div>
