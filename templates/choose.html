@@ -26,12 +26,12 @@
             </div>
         </div>
     </nav><!-- End: excel_header -->
-    <form method="post" action="{{ url_for("print_list") }}">
+    <form method="post" action="{{ url_for("print_list") }}" >
     <div class="card" style="margin: 0.2rem;">
         <div class="card-body">
             <h4 class="card-title" style="font-size: 1rem;background: #c9e8dd;padding: 0.1rem;">Column for names</h4>
-            <select name="name_tag" class="custom-select custom-select-sm">
-                <option selected>select column</option>
+            <select name="name_tag" class="custom-select custom-select-sm" required>
+                <option value="">select column</option>
                     {% for i in range(df.shape[1]) %}
                         <option value={{i}}>{{cols[i]}}</option>
                     {% endfor %}
@@ -43,8 +43,8 @@
         <div class="card-body">
             <h4 class="card-title" style="font-size: 1rem;background: #c9e8dd;padding: 0.1rem;">Column for contact numbers</h4>
             <p class="card-text">
-                <select name="contact_tag" class="custom-select custom-select-sm">
-                <option selected>select column</option>
+                <select name="contact_tag" class="custom-select custom-select-sm" required>
+                <option value="">select column</option>
                     {% for i in range(df.shape[1]) %}
                         <option value={{i}}>{{cols[i]}}</option>
                     {% endfor %}

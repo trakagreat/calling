@@ -4,7 +4,7 @@ import pandas as pd
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
-df = pd.read_excel("Book.xlsx")
+df = None
 col_index = None
 
 @app.route('/')
@@ -13,8 +13,9 @@ def hello_world():
 
 
 def cleaning_df():
-    df.dropna(axis=0, thresh=5, inplace=True)
+    df.dropna(axis=0, how='all', inplace=True)
     df.dropna(axis=1, how='all', inplace=True)
+    df.fillna("",inplace=True)
 
 
 def read_list(file):
@@ -49,9 +50,19 @@ def choose_col():
         print(col_str)
         if col_str == "default":
             cols = df.columns
+            df = df.reset_index()
+            df.index = list(range(1, len(df) + 1))
+            df.drop("index",axis=1,inplace=True)
+            df.index.name="Serial No."
         else:
             col_index = int(col_str)
             df.columns = df.iloc[col_index]
+            df= df[col_index+1:].reset_index()
+            df.index = list(range(1, len(df) + 1))
+            df.drop("index", axis=1, inplace=True)
+            df.index.name="Serial No."
+
+
             # df.drop(index=col_index, inplace=True)
 
             cols = df.columns
