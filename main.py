@@ -10,6 +10,7 @@ col_index = None
 
 @app.route('/')
 def hello_world():
+    global df
     df=None
     return render_template("index.html")
 
@@ -77,6 +78,7 @@ def choose_col():
 
 @app.route('/uploadpage', methods=['GET', 'POST'])
 def upload_page():
+    global df
     df=None
     return render_template("upload.html", df=df)
 
