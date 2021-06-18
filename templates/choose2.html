@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,9 +36,9 @@
             <div class="form-group">
                   <select name="column_index"  class="custom-select" required>
                 <option value="">select column</option>
-                  <option  value={{"default"}}>{{ cols.values}}</option>
+                  <option  value={{"default"}}>{{ pd.Series(df.columns).head().values}}</option>
                     {% for j in range(df.head().shape[0]) %}
-                        <option value={{j}}>{{ df.iloc[j].dropna().values }}</option>
+                        <option value={{j}}>{{ df.iloc[j].dropna().head().values }}</option>
                     {% endfor %}
             </select>
             </div>

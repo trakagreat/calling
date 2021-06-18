@@ -4,6 +4,7 @@ import pandas as pd
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 df = None
 col_index = None
 
@@ -38,7 +39,7 @@ def choose_column_index():
     columns = df.columns
     # head_rows = df.
     print(columns)
-    return render_template('choose2.html', cols=columns, df=df)
+    return render_template('choose2.html', cols=columns, df=df,pd=pd)
 
 
 @app.route('/choose_col', methods=['GET', 'POST'])
