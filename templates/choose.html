@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>excelcalling_beta</title>
+    <link href="/static/fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet"> <!--load all styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="/assets/css/styles.min.css?h=c1c875adbe3423b81e6840c89217b6d0">
@@ -12,17 +13,19 @@
 
 <body>
     <!-- Start: excel_header -->
-    <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="background: #f4db60;">
-        <div class="container"><a class="navbar-brand" href="#">Excelcalling</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1" style="color: rgb(0,0,0);filter: contrast(200%);border-style: none;"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navcol-1">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#">First Item</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Second Item</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Third Item</a></li>
-                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#">Dropdown </a>
-                        <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>
-                    </li>
-                </ul>
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="background: #f4db60;padding-bottom: 0px;padding-top: 0px">
+        <div class="container">
+            <a class="navbar-brand" href="#">Excelcalling</a>
+            <div class="navbar">
+                <a name="back" href="{{ url_for('choose_column_index') }}" style="color: green; margin-right: 0.2rem">
+                    <i class="fas fa-caret-square-left fa-2x"></i>
+                </a>
+                  <a name="home" href="{{ url_for('hello_world') }}" style="color: green; margin-right: 0.2rem">
+                    <i class="fas fa-h-square fa-2x"></i>
+                </a>
+{#                       <a name="save" href="#" style="color: green; margin-right: 0.2rem">#}
+{#                    <i class="fas fa-save fa-2x"></i>#}
+{#                </a>#}
             </div>
         </div>
     </nav><!-- End: excel_header -->
