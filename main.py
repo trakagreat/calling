@@ -25,12 +25,15 @@ def cleaning_df():
 
 def read_list(file):
     global df
+    df = None
     df = pd.read_excel(file)
     cleaning_df()
 
 
 @app.route('/uploader', methods=['GET', 'POST'])
 def upload_file():
+    global df
+    df = None
     print('going to choose column index')
     if request.method == 'POST':
         f = request.files['file']
